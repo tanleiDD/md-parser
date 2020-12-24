@@ -73,10 +73,10 @@ function mdParser(md) {
         for (let j=0; j<tasks.length; j++) {
 
             mdSplit(tasks[j].raw, /## /, /^\* /mg, tasks[j], 'things')
+            let things = tasks[j].things
+            for (let k=0; k<things.length; k++) {
 
-            for (let k=0; k<tasks[j].things.length; k++) {
-
-                let thing = tasks[j].things[k]
+                let thing = things[k]
                 let index = thing.raw.lastIndexOf(' ')
 
                 if (index !== -1) {
@@ -106,3 +106,5 @@ function mdParser(md) {
     return JSON.stringify(obj.tops)
 
 }
+
+console.log(mdParser(md))
